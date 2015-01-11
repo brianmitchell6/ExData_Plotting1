@@ -31,15 +31,32 @@ power.dates$date.time <- strptime(dt.col, dt.format)
 #*****Begin Plot the graph*****#
 
 #open a png graphic file device
-png(filename="plot1.png", width=480, height=480)
+png(filename="plot3.png", width=480, height=480)
 
-#plot the histogram to the png file
-hist(power.dates$Global_active_power,
-     main="Global Active Power", 
-     xlab="Global Active Power (kilowatts)",
+#plot Sub_metering_1 data
+plot(x=power.dates$date.time,
+     y=power.dates$Sub_metering_1, 
+     type="l", 
+     xlab="", 
+     ylab="Energy sub metering")
+
+#plot Sub_metering_2 data
+lines(x=power.dates$date.time,
+     y=power.dates$Sub_metering_2, 
      col="red")
 
-#close the png graphic file device
+#plot Sub_metering_3 data
+lines(x=power.dates$date.time,
+      y=power.dates$Sub_metering_3, 
+      col="blue")
+
+#plot legend
+legend("topright", 
+       lty=1, 
+       col = c("black", "red", "blue"), 
+       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+
+#clost the png device file
 dev.off()
 
 #*****End Plot the graph*****#

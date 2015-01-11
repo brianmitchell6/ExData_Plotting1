@@ -31,13 +31,14 @@ power.dates$date.time <- strptime(dt.col, dt.format)
 #*****Begin Plot the graph*****#
 
 #open a png graphic file device
-png(filename="plot1.png", width=480, height=480)
+png(filename="plot2.png", width=480, height=480)
 
-#plot the histogram to the png file
-hist(power.dates$Global_active_power,
-     main="Global Active Power", 
-     xlab="Global Active Power (kilowatts)",
-     col="red")
+#plot a line graph to the png file
+plot(y=power.dates$Global_active_power, 
+     x=power.dates$date.time, 
+     type="l",
+     xlab="",
+     ylab="Global Active Power (kilowatts)")
 
 #close the png graphic file device
 dev.off()
